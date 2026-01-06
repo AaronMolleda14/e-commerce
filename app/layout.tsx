@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Mi E-commerce',
-    template: '%s | Mi E-commerce',
+    default: 'E-commerce',
+    template: '%s | E-commerce',
   },
   description: 'Tienda online construida con Next.js',
 };
