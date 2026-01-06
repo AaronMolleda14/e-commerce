@@ -1,0 +1,27 @@
+// app/lib/auth-helpers.ts
+import { prisma } from "@/app/lib/db";
+import bcrypt from "bcrypt";
+
+export async function verifyCredentials(email: string, password: string) {
+    const user = await prisma.user.findUnique({
+        where: { email },
+    });
+
+    if (!user || !user.password) {
+        return null;
+    }
+
+    const isValid = await bcrypt.compare(password, user.password);
+
+    if (!isValid) {
+        return null;
+    }
+
+    return {
+        id: String(user.id),
+        name: user.name,
+        email: user.email,
+        role: user.role,
+    };
+}
+
