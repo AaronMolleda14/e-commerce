@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ProductWithImages } from "@/app/types/product";
+import AddToCartButton from "./AddToCartButton";
 
 interface ProductDetailProps {
     product: ProductWithImages;
@@ -15,10 +16,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
     const handleQuantityChange = (delta: number) => {
         setQuantity((prev) => Math.max(1, prev + delta));
-    };
-
-    const handleAddToCart = () => {
-        console.log(`Agregar al carrito: ${product.name}, cantidad: ${quantity}`);
     };
 
     return (
@@ -64,9 +61,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     </button>
                 </div>
 
-                <button onClick={handleAddToCart} className="cursor-pointer mt-6 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-600 to-red-600 text-white hover:from-orange-700 hover:to-red-700 transition shadow-md hover:shadow-lg font-medium">
-                    Agregar al Carrito
-                </button>
+                <AddToCartButton product={product} quantity={quantity}/>
             </div>
         </div>
     );

@@ -47,7 +47,7 @@ export default async function ConfirmationPage({ params }: Props) {
             </div>
 
             {/* Botones de acción */}
-            <div className="flex gap-4 pt-4 border-t">
+            <div className="flex gap-4 pt-4">
                 <Link
                     href={`/orders/${order.id}`}
                     className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800 transition"

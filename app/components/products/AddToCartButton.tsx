@@ -2,20 +2,15 @@
 "use client";
 
 import { useCart } from "@/app/hooks/useCart";
-import { Product, ProductImage } from "@/app/generated/prisma";
-import { CartItem } from "@/app/types/cart";
+import { ProductWithImages } from "@/app/types/product";
 import { useState } from "react";
-
-type ProductWithImages = Omit<Product, 'price'> & {
-    images: ProductImage[];
-    price: number;
-}
 
 interface Props {
     product: ProductWithImages;
+    quantity?: number;
 }
 
-export default function AddToCartButton({ product }: Props) {
+export default function AddToCartButton({ product, quantity = 1 }: Props) {
     const { items, addItem, updateQuantity } = useCart();
     const [added, setAdded] = useState(false);
 
@@ -24,14 +19,14 @@ export default function AddToCartButton({ product }: Props) {
 
         if (existingItem) {
             // Use updateQuantity to increment existing item
-            updateQuantity(product.id, existingItem.quantity + 1);
+            updateQuantity(product.id, existingItem.quantity + quantity);
         } else {
             addItem({
                 productId: product.id,
                 name: product.name,
                 slug: product.slug,
                 price: product.price,
-                quantity: 1,
+                quantity,
                 image: product.images?.[0]?.url ?? "/placeholder.png",
             });
         }

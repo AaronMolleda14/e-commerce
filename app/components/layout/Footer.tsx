@@ -21,7 +21,8 @@ export default function Footer() {
             </div>
 
             <div className="text-center text-sm text-gray-500 py-4">
-                © {new Date().getFullYear()} Mochiflex. Todos los derechos reservados.
+                <p>© {new Date().getFullYear()} Mochiflex. Todos los derechos reservados.</p>
+                <p>Esta es una app de prueba, algunas funcionalidades pueden tener bugs o no estan implementadas.</p>
             </div>
         </footer>
     );
