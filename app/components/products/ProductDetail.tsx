@@ -41,8 +41,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                         <Image
                             src={selectedImage}
                             alt={product.name}
-                            width={500}
-                            height={500}
+                            width={300}
+                            height={300}
                             className="object-contain w-full h-full"
                         />
                     )}
