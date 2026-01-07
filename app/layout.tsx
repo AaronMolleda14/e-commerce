@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     template: '%s | E-commerce',
   },
   description: 'Tienda online construida con Next.js',
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
